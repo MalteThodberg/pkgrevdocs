@@ -244,9 +244,13 @@ step-1-deprecate-the-function
 step-2-mark-the-function-as-defunct
 step-3-remove-the-function
 deprecate-dataset
-step-1---save-a-promise-object
-step-2---update-documentation
-step-3---defunct-the-dataset
+step-1---create-an-s3-deprecation-class
+step-2---create-a-print-method
+step-3---update-documentation
+step-4---defunct-the-dataset
+how-to-deprecate-an-s4-dataset
+step-1---create-an-s4-deprecation-class
+step-2---create-a-show-method
 deprecate-package
 package-end-of-life-policy
 criteria-for-package-deprecation-by-core-team
