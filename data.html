@@ -161,7 +161,7 @@ It is most often a <code>.RData</code> file created with <code><a href="https://
 <p>For packages that need to use documented data within a function, we recommend
 creating an environment for holding the data to avoid polluting the
 global environment when using <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data_env</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span><span class="op">(</span>parent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">emptyenv</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"mydata"</span>, envir <span class="op">=</span> <span class="va">data_env</span>, package <span class="op">=</span> <span class="st">"mypackage"</span><span class="op">)</span></span>
 <span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="va">data_env</span><span class="op">[[</span><span class="st">"mydata"</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
@@ -240,7 +240,7 @@ downloads</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-06.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

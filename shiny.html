@@ -135,14 +135,14 @@ Do this both for observers reacting to the Shiny server <code>input</code> objec
 <p>In other words, the function <code><a href="https://rdrr.io/pkg/shiny/man/runApp.html">shiny::runApp()</a></code> should not be found anywhere in the package source code.
 Instead, users should be left to call that function, using Shiny app objects returned by the package functions and options that control how the app is run (e.g., <code>launch.browser = TRUE</code>).</p>
 <p>For instance, the package source code should look as follows:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">build_app</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu">.build_ui</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span>  <span class="va">server</span> <span class="op">&lt;-</span> <span class="fu">.build_server</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span>  <span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">shinyApp</span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>While the user’s code should look as follows:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">build_app</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span><span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/runApp.html">runApp</a></span><span class="op">(</span><span class="va">app</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -180,7 +180,7 @@ function.</p>
 standard unit testing tools (e.g., <em><a href="https://CRAN.R-project.org/package=testthat">testthat</a></em>).</p>
 <p>The use of <code># nocov start</code> and <code># nocov end</code> is allowed to ignore part of the code that cannot be tested using traditional unit tests (e.g., <code>observeEvent</code>).</p>
 <p>For instance:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># nocov start</span></span>
 <span><span class="fu">observeEvent</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">example_input</span>, <span class="op">{</span></span>
 <span>    <span class="co"># &lt;do something&gt;</span></span>
@@ -196,7 +196,7 @@ test visual and computational aspects of Shiny apps.</p>
 </h2>
 <p>Man pages documenting functions that return Shiny apps should use the <code><a href="https://rdrr.io/r/base/interactive.html">interactive()</a></code> function to demonstrate usage of the app.</p>
 <p>For instance, a typical ‘Example’ section for such a man page should look as follows:</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">MyShinyPackage</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">build_app</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
@@ -215,7 +215,7 @@ internal documentation by linking to it in other help pages within the package
 (e.g., within a “for developers” section).</li>
 </ul>
 <p>For example:</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @keywords internal</span></span>
 <span><span class="va">.build_app</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">...</span></span>
@@ -225,7 +225,7 @@ internal documentation by linking to it in other help pages within the package
 and add them to <code>man/.gitignore</code>.</li>
 </ul>
 <p>To set the name of an Rd document, use the <code>@name</code> tag in the Roxygen block:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @name INTERNAL_build_app</span></span>
 <span><span class="va">.build_app</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">...</span></span>
@@ -283,7 +283,7 @@ messages to the user.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-06.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

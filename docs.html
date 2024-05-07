@@ -158,6 +158,19 @@ the above suggestion:</p>
     toc: true
     toc_depth: 2
 </code></pre>
+<p>If you want to write more than one vignette, you may want to control
+the order that they are displayed on the package homepage and when the
+<code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes()</a></code> function is called. Vignettes will show up in
+alphabetical order, which may not be a logical ordering without
+further specification. One approach to controlling the order of the
+vignettes is to use a number in the <code>VignettteIndexEntry</code> setting,
+e.g. using numbers <code>1-9</code>, if you have a single digit number of
+vignettes, or <code>01-99</code> if you have ten or more vignettes. For example,
+the first vignette could specify in the header:</p>
+<pre><code>vignette: &gt;
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{1. Quick start to MyPackage}
+  %\VignetteEncoding{UTF-8}</code></pre>
 <p>Some best practices and requirements for writing <em>Bioconductor</em> vignettes are
 detailed in the following sections.</p>
 <div id="vignette-introduction" class="section level3" number="12.2.1">
@@ -336,7 +349,7 @@ provided through <code>inst</code> subdirectories but do not substitute for the
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-06.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

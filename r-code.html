@@ -444,7 +444,7 @@ that check for multiple conditions and return a value if some of those
 conditions are true. The function <code>hasValueSection</code> is checking that the
 documentation contains a ‘value’ Rd tag i.e., a return section in the
 documentation.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hasValueSection</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">manpage</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/parse_Rd.html">parse_Rd</a></span><span class="op">(</span><span class="va">manpage</span><span class="op">)</span></span>
 <span>    <span class="va">type</span> <span class="op">&lt;-</span> <span class="fu">BiocCheck</span><span class="fu">:::</span><span class="fu">docType</span><span class="op">(</span><span class="va">rd</span><span class="op">)</span></span>
@@ -468,13 +468,13 @@ documentation.</p>
 <p>As you can see, the code here is quite complex, creating <code>if</code> statements for
 specific conditions. The measured cyclomatic complexity as given by the
 <code>cyclocomp</code> package is a value of 16.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/gaborcsardi/cyclocomp">cyclocomp</a></span><span class="op">)</span></span>
 <span><span class="fu">cyclocomp</span><span class="op">(</span><span class="va">hasValueSection</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 16</span></span></code></pre></div>
 <p>Let’s re-write the function to reduce the complexity and use a base character
 vector representation.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hasValueSection2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">manpage</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/parse_Rd.html">parse_Rd</a></span><span class="op">(</span><span class="va">manpage</span><span class="op">)</span></span>
 <span>    <span class="va">tags</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">:::</span><span class="fu">RdTags</span><span class="op">(</span><span class="va">rd</span><span class="op">)</span></span>
@@ -488,7 +488,7 @@ vector representation.</p>
 successive functions will operate on that representation. This gives us code
 that is less complex and easier to understand and maintain with a complexity
 metric value of 2.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">cyclocomp</span><span class="op">(</span><span class="va">hasValueSection2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p>Note. Switches based on <code>docType</code> should be outside of the function as a filter
@@ -725,7 +725,7 @@ should be set as a default.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-06.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-05-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
