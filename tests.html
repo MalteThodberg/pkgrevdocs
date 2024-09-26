@@ -111,13 +111,14 @@ it a try. Here we explain how to write unit tests, how to run them,
 and how they are woven into the standard Bioconductor build process.
 We hope that unit tests will become a standard part of your software
 development, and an integral part of your Bioconductor package.</p>
-<p>We recommend either the <a href="http://cran.r-project.org/web/packages/RUnit/index.html">RUnit</a> or <a href="http://cran.r-project.org/web/packages/testthat/index.html">testthat</a> packages from CRAN to write unit
-tests. RUnit is an <em>R</em> implementation of the <a href="http://en.wikipedia.org/wiki/Agile_software_development">agile</a> software development
-‘XUnit’ tools (see also <a href="http://www.junit.org">JUnit</a>, <a href="http://pyunit.sourceforge.net">PyUnit</a>) each of which tries to encourage, in
-their respective language, the rapid development of robust useful
-software. Testthat also draws inspiration from the xUnit family of testing
-packages, as well as from many of the innovative ruby testing libraries, like
-<a href="https://rspec.info">rspec</a>, <a href="https://github.com/ahoward/testy">testy</a>, <a href="https://github.com/chneukirchen/bacon">bacon</a> and <a href="https://cucumber.io">cucumber</a>.</p>
+<p>We recommend either the <a href="http://cran.r-project.org/web/packages/RUnit/index.html">RUnit</a>, <a href="https://cran.r-project.org/package=tinytest">tinytest</a>, or <a href="http://cran.r-project.org/web/packages/testthat/index.html">testthat</a> packages from
+CRAN to write unit tests. <code>RUnit</code> is an <em>R</em> implementation of the <a href="http://en.wikipedia.org/wiki/Agile_software_development">agile</a>
+software development ‘XUnit’ tools (see also <a href="http://www.junit.org">JUnit</a>, <a href="http://pyunit.sourceforge.net">PyUnit</a>) each of
+which tries to encourage, in their respective language, the rapid development of
+robust useful software. <code>tinytest</code> is a lightweight (zero-dependency) and
+easy-to-use unit testing framework. <code>testthat</code> also draws inspiration from the
+‘XUnit’ family of testing packages, as well as from many of the innovative ruby
+testing libraries, like <a href="https://rspec.info">rspec</a>, <a href="https://github.com/ahoward/testy">testy</a>, <a href="https://github.com/chneukirchen/bacon">bacon</a> and <a href="https://cucumber.io">cucumber</a>.</p>
 <div id="tests-motivation" class="section level2" number="14.1">
 <h2>
 <span class="header-section-number">14.1</span> Motivation<a class="anchor" aria-label="anchor" href="#tests-motivation"><i class="fas fa-link"></i></a>
@@ -143,16 +144,21 @@ formalized</strong> unit testing. This requires only a very few conventions
 and practices:</p>
 <ul>
 <li>Store the test functions in a standard directory.</li>
-<li>Use simple functions from the <em>RUnit</em> or <em>testthat</em> packages to check your results.</li>
+<li>Use simple functions from the <em>RUnit</em>, <em>tinytest</em>, or <em>testthat</em> packages to
+check your results.</li>
 <li>Run the tests as a routine part of your development process.</li>
 </ul>
-<p>Here is a RUnit test for <code>divideBy</code>:</p>
+<p>Here is a <code>RUnit</code> test for <code>divideBy</code>:</p>
 <pre><code>test_divideBy &lt;- function() {
     checkEquals(divideBy(4, 2), 2)
     checkTrue(is.na(divideBy(4, 0)))
     checkEqualsNumeric(divideBy(4, 1.2345), 3.24, tolerance=1.0e-4)
 }</code></pre>
-<p>And the equivalent test suing testthat:</p>
+<p>the equivalent test using <code>tinytest</code>:</p>
+<pre><code>expect_equal(divideBy(4, 2), 2)
+expect_true(is.na(divideBy(4, 0)))
+expect_equal(divideBy(4, 1.2345), 3.24, tolerance=1.0e-4)</code></pre>
+<p>and the equivalent test using <code>testthat</code>:</p>
 <pre><code>test_that("divideBy works properly", {
   expect_equal(divideBy(4, 2), 2)
   expect_true(is.na(divideBy(4, 0)))
@@ -202,8 +208,8 @@ complete set of tests.</p>
 <h2>
 <span class="header-section-number">14.2</span> Deciding Which Test Framework To Use<a class="anchor" aria-label="anchor" href="#which-tests"><i class="fas fa-link"></i></a>
 </h2>
-<p>RUnit and testthat are both robust testing solutions that are great tools for
-package development, which you choose to use for your package largely comes
+<p>RUnit, tinytest, and testthat are robust testing solutions that are great tools
+for package development, which you choose to use for your package largely comes
 down to personal preference. However here is a brief list of strengths and
 weaknesses of each.</p>
 <div id="runit-strengths" class="section level3" number="14.2.1">
@@ -229,9 +235,28 @@ the core packages.</li>
 <code>BiocGenerics:::testPackage()</code> below which handles some of this).</li>
 </ul>
 </div>
-<div id="testthat-strengths" class="section level3" number="14.2.3">
+<div id="tinytest-strengths" class="section level3" number="14.2.3">
 <h3>
-<span class="header-section-number">14.2.3</span> Testthat Strengths<a class="anchor" aria-label="anchor" href="#testthat-strengths"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.3</span> tinytest Strengths<a class="anchor" aria-label="anchor" href="#tinytest-strengths"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Easy to setup and use; tests written as scripts</li>
+<li>Tests can be run interactively as well as via <code>R CMD check</code>
+</li>
+<li>Test results can be treated as data</li>
+</ul>
+</div>
+<div id="tinytest-weaknesses" class="section level3" number="14.2.4">
+<h3>
+<span class="header-section-number">14.2.4</span> tinytest Weaknesses<a class="anchor" aria-label="anchor" href="#tinytest-weaknesses"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Minimally necessary functionality available</li>
+</ul>
+</div>
+<div id="testthat-strengths" class="section level3" number="14.2.5">
+<h3>
+<span class="header-section-number">14.2.5</span> Testthat Strengths<a class="anchor" aria-label="anchor" href="#testthat-strengths"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Active development with over 39 contributors.</li>
@@ -246,9 +271,9 @@ real-time test results.</li>
 <li>Used extensively in CRAN (546 CRAN packages, overall 598 circa May 2015).</li>
 </ul>
 </div>
-<div id="testthat-weaknesses" class="section level3" number="14.2.4">
+<div id="testthat-weaknesses" class="section level3" number="14.2.6">
 <h3>
-<span class="header-section-number">14.2.4</span> Testthat Weaknesses<a class="anchor" aria-label="anchor" href="#testthat-weaknesses"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.6</span> Testthat Weaknesses<a class="anchor" aria-label="anchor" href="#testthat-weaknesses"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Test code is slightly more verbose than the equivalent RUnit tests.</li>
@@ -403,6 +428,23 @@ can be used to programmatically convert RUnit tests to testthat format.</li>
 <code>Suggests: RUnit, BiocGenerics</code>.</li>
 </ol>
 </div>
+<div id="conversion-from-runit-to-tinytest" class="section level3" number="14.4.2">
+<h3>
+<span class="header-section-number">14.4.2</span> Conversion from RUnit to tinytest<a class="anchor" aria-label="anchor" href="#conversion-from-runit-to-tinytest"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Test files are placed in the <code>inst/tinytest</code> directory with names such as
+<code>test_FILE.R</code>.</li>
+<li>Remove <code>RUnit</code> function shells and extract the function bodies into a single
+script.</li>
+<li>Include a <code>tinytest.R</code> file in the <code>tests</code> folder that runs:</li>
+</ol>
+<pre><code>if (requireNamespace("tinytest", quietly = TRUE))
+    tinytest::test_package("PACKAGE")</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Add <code>Suggests: testthat</code> to your <code>DESCRIPTION</code> file.</li>
+</ol>
+</div>
 </div>
 <div id="test-coverage" class="section level2" number="14.5">
 <h2>
@@ -412,8 +454,8 @@ can be used to programmatically convert RUnit tests to testthat format.</li>
 refers to the percentage of your package code
 that is tested by your unit tests. Packages with higher coverage
 have a lower chance of containing bugs.</p>
-<p>If tests are taking too long to achieve full test coverage, see <a href="long-tests.html#long-tests">long
-tests</a>. Before implementing long tests we highly recommend reaching out to the
+<p>If tests are taking too long to achieve full test coverage, see <a href="long-tests.html#long-tests">long tests</a>.
+Before implementing long tests we highly recommend reaching out to the
 bioconductor team on the <a href="https://stat.ethz.ch/mailman/listinfo/bioc-devel">bioc-devel</a> mailing list to ensure
 proper use and justification.</p>
 </div>
@@ -444,8 +486,10 @@ proper use and justification.</p>
 <a class="nav-link" href="#which-tests"><span class="header-section-number">14.2</span> Deciding Which Test Framework To Use</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#runit-strengths"><span class="header-section-number">14.2.1</span> RUnit Strengths</a></li>
 <li><a class="nav-link" href="#runit-weaknesses"><span class="header-section-number">14.2.2</span> RUnit Weaknesses</a></li>
-<li><a class="nav-link" href="#testthat-strengths"><span class="header-section-number">14.2.3</span> Testthat Strengths</a></li>
-<li><a class="nav-link" href="#testthat-weaknesses"><span class="header-section-number">14.2.4</span> Testthat Weaknesses</a></li>
+<li><a class="nav-link" href="#tinytest-strengths"><span class="header-section-number">14.2.3</span> tinytest Strengths</a></li>
+<li><a class="nav-link" href="#tinytest-weaknesses"><span class="header-section-number">14.2.4</span> tinytest Weaknesses</a></li>
+<li><a class="nav-link" href="#testthat-strengths"><span class="header-section-number">14.2.5</span> Testthat Strengths</a></li>
+<li><a class="nav-link" href="#testthat-weaknesses"><span class="header-section-number">14.2.6</span> Testthat Weaknesses</a></li>
 </ul>
 </li>
 <li>
@@ -457,7 +501,10 @@ proper use and justification.</p>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#testthat-usage"><span class="header-section-number">14.4</span> Testthat Usage</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#conversion-from-runit-to-testthat"><span class="header-section-number">14.4.1</span> Conversion from RUnit to testthat</a></li></ul>
+<a class="nav-link" href="#testthat-usage"><span class="header-section-number">14.4</span> Testthat Usage</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#conversion-from-runit-to-testthat"><span class="header-section-number">14.4.1</span> Conversion from RUnit to testthat</a></li>
+<li><a class="nav-link" href="#conversion-from-runit-to-tinytest"><span class="header-section-number">14.4.2</span> Conversion from RUnit to tinytest</a></li>
+</ul>
 </li>
 <li><a class="nav-link" href="#test-coverage"><span class="header-section-number">14.5</span> Test Coverage</a></li>
 <li><a class="nav-link" href="#additional-resources"><span class="header-section-number">14.6</span> Additional Resources</a></li>
@@ -478,7 +525,7 @@ proper use and justification.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-09-25.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-09-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -86,6 +86,8 @@ tests-motivation
 which-tests
 runit-strengths
 runit-weaknesses
+tinytest-strengths
+tinytest-weaknesses
 testthat-strengths
 testthat-weaknesses
 runit-usage
@@ -95,6 +97,7 @@ r-unit-during-develoment
 summary-the-minimal-setup
 testthat-usage
 conversion-from-runit-to-testthat
+conversion-from-runit-to-tinytest
 test-coverage
 additional-resources
 r-code
