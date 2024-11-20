@@ -106,8 +106,11 @@
 <p>An INSTALL file does not have to be included with the package. An INSTALL file
 is utilized for specifying external system requirements needed. It should be
 used in combination with the <code>SystemRequirements</code> field of the <a href="description.html#description-sysdep">Description
-file</a>. This file should contain installation instructions
-for the required system dependency.</p>
+file</a>. This file should provide instructions for installing
+the external software on the 3 major OS that we support: Linux, Windows, and
+Mac. This will not only help your users get the external software on their
+machines, but it will also help us install it on the build machines if it’s not
+already there.</p>
 <p>Specifying this requirement does not guarantee that <em>Bioconductor</em> will agree to
 install the external system requirement. It is encouraged to discuss any
 additional system requirements on the <a href="mailto:bioc-devel@r-project.org" class="email">bioc-devel@r-project.org</a> before
