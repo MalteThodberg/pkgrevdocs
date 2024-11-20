@@ -120,12 +120,12 @@ operating systems, and that users benefit from easy-to-run vignettes
 and examples.</p>
 <ol style="list-style-type: decimal">
 <li><p>Download files of reasonable size. Use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> to estimate the
-download time. Remember the package should require less than 5 minutes to
-run <code>R CMD check --no-build-vignettes</code>.</p></li>
+download time. Remember the package should require less than 10 minutes to
+run <code>R CMD check --no-build-vignettes</code> with an upper limit of 15 minutes.</p></li>
 <li><p>Set a limit on the number of times the function tries a URL. Avoid
 <code>while()</code> statements that have no guaranteed termination. These
 become infinite loops and eventually result in build-system <code>TIMEOUT</code>s.</p></li>
-<li><p>Supply an informative error message.</p></li>
+<li><p>Supply informative error messages.</p></li>
 </ol>
 </div>
 <div id="template-for-resource-queries" class="section level2" number="33.2">
