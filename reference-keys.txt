@@ -185,6 +185,9 @@ reset-to-a-previous-commit
 delete-your-local-copy-and-github-repo-because-nothing-is-working
 disadvantages-of-going-nuclear
 bug-fix-in-release-and-devel
+bug-fixes-due-to-api-changes
+minor-api-changes
+major-api-changes
 resolve-duplicate-commits
 steps
 how-to-check-if-your-package-has-duplicate-commits

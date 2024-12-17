@@ -602,19 +602,17 @@ installation.</p></li>
 </div>
 <div id="scenarios-for-code-update" class="section level2" number="21.7">
 <h2>
-<span class="header-section-number">21.7</span> Scenarios for code update:<a class="anchor" aria-label="anchor" href="#scenarios-for-code-update"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.7</span> Scenarios for code update<a class="anchor" aria-label="anchor" href="#scenarios-for-code-update"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
-<a href="git-version-control.html#pull-upstream-changes">Pull upstream changes</a>, e.g., introduced by the core team.</li>
+<a href="git-version-control.html#pull-upstream-changes">Pull upstream changes</a> (e.g., introduced by the core team)</li>
 <li>
-<a href="git-version-control.html#push-to-github-bioc">Push to GitHub and <em>Bioconductor</em></a> repositories.</li>
-<li>
-<a href="git-version-control.html#resolve-merge-conflicts">Resolve merge conflicts</a>.</li>
-<li>
-<a href="git-version-control.html#abandon-changes">Abandon changes</a>.</li>
-<li>
-<a href="git-version-control.html#bug-fix-in-release-and-devel">Fix bugs in devel and release</a>.</li>
+<a href="git-version-control.html#push-to-github-bioc">Push to GitHub and <em>Bioconductor</em></a> repositories</li>
+<li><a href="git-version-control.html#resolve-merge-conflicts">Resolve merge conflicts</a></li>
+<li><a href="git-version-control.html#abandon-changes">Abandon changes</a></li>
+<li><a href="git-version-control.html#bug-fix-in-release-and-devel">Fix bugs in devel and release</a></li>
+<li><a href="git-version-control.html#bug-fixes-due-to-api-changes">Bug fixes due to API changes</a></li>
 <li><a href="git-version-control.html#resolve-duplicate-commits">Resolve duplicate commits</a></li>
 </ul>
 <div id="pull-upstream-changes" class="section level3" number="21.7.1">
@@ -971,17 +969,49 @@ branch on your local machine.</p>
 <iframe width="568" height="315" src="https://www.loom.com/embed/37525f9ddf434c91b11e8112db46818b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
 </iframe>
 </div>
-<div id="resolve-duplicate-commits" class="section level3" number="21.7.6">
+<div id="bug-fixes-due-to-api-changes" class="section level3" number="21.7.6">
 <h3>
-<span class="header-section-number">21.7.6</span> Resolve Duplicate Commits<a class="anchor" aria-label="anchor" href="#resolve-duplicate-commits"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.7.6</span> Bug fixes due to API changes<a class="anchor" aria-label="anchor" href="#bug-fixes-due-to-api-changes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Packages that make use of web APIs will need to be updated when there are
+significant API changes. This is a common occurrence with Bioconductor packages
+that use REST APIs, e.g., <code>UniProt.ws</code>, <code>AnVIL</code>, etc. To provide a smooth
+experience for users, it is important to update the package as soon as possible.</p>
+<div id="minor-api-changes" class="section level4" number="21.7.6.1">
+<h4>
+<span class="header-section-number">21.7.6.1</span> Minor API changes<a class="anchor" aria-label="anchor" href="#minor-api-changes"><i class="fas fa-link"></i></a>
+</h4>
+<p>The steps to apply bug fixes due to API changes are similar to the steps for
+fixing bugs in the <code>devel</code> and <code>release</code> branches. The main difference is that
+the bug may be due to minor API issues, certificate issues, API version issues,
+etc. The maintainer can readily update the R package to adapt to the new API.
+Note that the functionality of the package largely remains the same.</p>
+</div>
+<div id="major-api-changes" class="section level4" number="21.7.6.2">
+<h4>
+<span class="header-section-number">21.7.6.2</span> Major API changes<a class="anchor" aria-label="anchor" href="#major-api-changes"><i class="fas fa-link"></i></a>
+</h4>
+<p>It may be possible that an organization’s API changes are not backwards
+compatible and that they do not provide the same functionality for the existing
+Bioconductor package to remain functional. In such case, it is recommended to
+contact the organization that maintains the API to get more information about
+the changes and to request a backward compatible API, if possible. When API
+changes do not provide a similar functionality to that of the R package, the
+package maintainer may need to submit a new package that works with the new API
+and to deprecate the old package.</p>
+</div>
+</div>
+<div id="resolve-duplicate-commits" class="section level3" number="21.7.7">
+<h3>
+<span class="header-section-number">21.7.7</span> Resolve Duplicate Commits<a class="anchor" aria-label="anchor" href="#resolve-duplicate-commits"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Goal:</strong> You want to get rid of the duplicate (or triplicate) commits
 in your git commit history.</p>
 <p>Before you begin <a href="git-version-control.html#resolve-merge-conflicts">Update your package</a> to the existing version on
 Bioconductor.</p>
-<div id="steps" class="section level4" number="21.7.6.1">
+<div id="steps" class="section level4" number="21.7.7.1">
 <h4>
-<span class="header-section-number">21.7.6.1</span> Steps:<a class="anchor" aria-label="anchor" href="#steps"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.7.7.1</span> Steps:<a class="anchor" aria-label="anchor" href="#steps"><i class="fas fa-link"></i></a>
 </h4>
 <ol style="list-style-type: decimal">
 <li>
@@ -1018,9 +1048,9 @@ version on Bioconductor. This is not possible as <code>--force</code> pushes
 which alter the git timeline are not possible for maintainers.</p></li>
 </ol>
 </div>
-<div id="how-to-check-if-your-package-has-duplicate-commits" class="section level4" number="21.7.6.2">
+<div id="how-to-check-if-your-package-has-duplicate-commits" class="section level4" number="21.7.7.2">
 <h4>
-<span class="header-section-number">21.7.6.2</span> How to check if your package has duplicate commits<a class="anchor" aria-label="anchor" href="#how-to-check-if-your-package-has-duplicate-commits"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.7.7.2</span> How to check if your package has duplicate commits<a class="anchor" aria-label="anchor" href="#how-to-check-if-your-package-has-duplicate-commits"><i class="fas fa-link"></i></a>
 </h4>
 <p>One way is to check the log. You should see the same commit message
 with the same changes, but with a different commit ID, if you try</p>
@@ -1028,9 +1058,9 @@ with the same changes, but with a different commit ID, if you try</p>
 <p>or</p>
 <pre><code>git log --oneline</code></pre>
 </div>
-<div id="script-to-detect-duplicate-commits" class="section level4" number="21.7.6.3">
+<div id="script-to-detect-duplicate-commits" class="section level4" number="21.7.7.3">
 <h4>
-<span class="header-section-number">21.7.6.3</span> Script to detect duplicate commits<a class="anchor" aria-label="anchor" href="#script-to-detect-duplicate-commits"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.7.7.3</span> Script to detect duplicate commits<a class="anchor" aria-label="anchor" href="#script-to-detect-duplicate-commits"><i class="fas fa-link"></i></a>
 </h4>
 <p>Run this script written in python to <a href="https://github.com/Bioconductor/bioc_git_transition/blob/master/misc/detect_duplicate_commits.py">detect duplicate commits</a>
 which are specific to Bioconductor repositories.</p>
@@ -1514,13 +1544,14 @@ please send an email to <a href="mailto:bioc-devel@bioconductor.org" class="emai
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#scenarios-for-code-update"><span class="header-section-number">21.7</span> Scenarios for code update:</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#scenarios-for-code-update"><span class="header-section-number">21.7</span> Scenarios for code update</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#pull-upstream-changes"><span class="header-section-number">21.7.1</span> Pull upstream changes</a></li>
 <li><a class="nav-link" href="#push-to-github-bioc"><span class="header-section-number">21.7.2</span> Push to GitHub and Bioconductor repositories</a></li>
 <li><a class="nav-link" href="#resolve-merge-conflicts"><span class="header-section-number">21.7.3</span> Resolve merge conflicts</a></li>
 <li><a class="nav-link" href="#abandon-changes"><span class="header-section-number">21.7.4</span> Abandon changes</a></li>
 <li><a class="nav-link" href="#bug-fix-in-release-and-devel"><span class="header-section-number">21.7.5</span> Fix bugs in devel and release</a></li>
-<li><a class="nav-link" href="#resolve-duplicate-commits"><span class="header-section-number">21.7.6</span> Resolve Duplicate Commits</a></li>
+<li><a class="nav-link" href="#bug-fixes-due-to-api-changes"><span class="header-section-number">21.7.6</span> Bug fixes due to API changes</a></li>
+<li><a class="nav-link" href="#resolve-duplicate-commits"><span class="header-section-number">21.7.7</span> Resolve Duplicate Commits</a></li>
 </ul>
 </li>
 <li>
@@ -1550,7 +1581,7 @@ please send an email to <a href="mailto:bioc-devel@bioconductor.org" class="emai
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-12-02.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2024-12-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
