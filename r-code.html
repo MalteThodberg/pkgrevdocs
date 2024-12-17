@@ -156,10 +156,13 @@ Bioconductor. One example of a generic and method implementation is that of the
 numeric vector of the same length as the rows and is adhered to across classes
 including the <code>DelayedMatrix</code> class. Re-using generics reduces the amount of
 new generics by consolidating existing operations and avoids the mistake of
-introducing a “new” generic with the same name. Generic name collisions may
-mask or be masked by previous definitions in ways that are hard to diagnose.
-More recently, we recommend the use of <em><a href="https://CRAN.R-project.org/package=conflicted">conflicted</a></em> to
-identify namespace collisions.</p>
+introducing a “new” generic with the same name. Note that in order to re-use
+a generic, the behavior of the method should align with the originally
+proposed behavior of the generic. Avoid creating generics from existing <code>base</code>
+or <code>utils</code> functions as this can lead to confusion and conflicts with
+existing functions and generics. Generic name collisions may mask previous
+definitions in ways that are hard to debug and diagnose. We recommend the use of
+<em><a href="https://CRAN.R-project.org/package=conflicted">conflicted</a></em> to identify namespace collisions.</p>
 <p>If there are problems, e.g., in performance or parsing your particular
 file type, ask for input from other developers on the
 <a href="https://stat.ethz.ch/mailman/listinfo/bioc-devel">bioc-devel</a> mailing list. Common disadvantages to
