@@ -72,7 +72,7 @@ package-level-documentation
 functions-and-classes
 data-man
 examples
-doc-inst-script
+doc-inst-scripts
 other-doc
 data
 experiment-data-package
