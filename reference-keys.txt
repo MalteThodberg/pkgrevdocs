@@ -73,6 +73,7 @@ functions-and-classes
 data-man
 examples
 doc-inst-scripts
+doc-data-raw
 other-doc
 data
 experiment-data-package

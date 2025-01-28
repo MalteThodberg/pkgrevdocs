@@ -286,16 +286,29 @@ exceptions can be made with proper justification and are at the discretion of
 </h2>
 <p>The scripts in this directory can vary.</p>
 <p>Most importantly if data was included in the <code>inst/extdata/</code> directory, a
-related script must be present in this directory documenting very clearly how
-the data was generated and source information.</p>
-<p>It should include source URLs and any key information regarding filtering or processing.</p>
-<p>It can be executable code, sudo code, or a text description.</p>
-<p>Users should be able to download and be able to roughly reproduce the file or
-object that is present as data.</p>
+related script must be present in this directory clearly documenting how the
+data was obtained and prepared.</p>
+<p>It should include any source URLs and information regarding filtering or
+pre-processing.</p>
+<p>It can be executable code, sudo code, or even a text description.</p>
+<p>Users should be able to download and roughly reproduce the data file or object
+in <code>inst/extdata/</code>.</p>
 </div>
-<div id="other-doc" class="section level2" number="12.5">
+<div id="doc-data-raw" class="section level2" number="12.5">
 <h2>
-<span class="header-section-number">12.5</span> Other<a class="anchor" aria-label="anchor" href="#other-doc"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5</span> The <code>data-raw</code> directory<a class="anchor" aria-label="anchor" href="#doc-data-raw"><i class="fas fa-link"></i></a>
+</h2>
+<p>Although the preferred location is <code>inst/scripts</code>, the <code>data-raw</code> directory may
+be used instead to store scripts that generated data files or objects. Note
+that one potential disadvantage of using the <code>data-raw</code> directory is that the
+scripts are not included in the package installation folder (for users to
+inspect).</p>
+<p>For more details, see the <code>Data</code> chapter in Hadley Wickham’s
+<a href="https://r-pkgs.org/data.html">R Packages</a>.</p>
+</div>
+<div id="other-doc" class="section level2" number="12.6">
+<h2>
+<span class="header-section-number">12.6</span> Other<a class="anchor" aria-label="anchor" href="#other-doc"><i class="fas fa-link"></i></a>
 </h2>
 <p>Other types of documentation (e.g. static files, jupyter notebooks, etc.) can be
 provided through <code>inst</code> subdirectories but do not substitute for the
@@ -331,7 +344,8 @@ provided through <code>inst</code> subdirectories but do not substitute for the
 </ul>
 </li>
 <li><a class="nav-link" href="#doc-inst-scripts"><span class="header-section-number">12.4</span> The inst/scripts/ directory</a></li>
-<li><a class="nav-link" href="#other-doc"><span class="header-section-number">12.5</span> Other</a></li>
+<li><a class="nav-link" href="#doc-data-raw"><span class="header-section-number">12.5</span> The data-raw directory</a></li>
+<li><a class="nav-link" href="#other-doc"><span class="header-section-number">12.6</span> Other</a></li>
 </ul>
 
       <div class="book-extra">
@@ -349,7 +363,7 @@ provided through <code>inst</code> subdirectories but do not substitute for the
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2025-01-15.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2025-01-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
