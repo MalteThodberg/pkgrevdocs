@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="The DESCRIPTION file must be properly formatted. The following sections will review some important notes regarding fields of the DESCRIPTION file and associated files.  6.1 Package This is the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -177,10 +177,62 @@ push access to <code>git.bioconductor.org</code>.</p>
 <a href="http://en.wikipedia.org/wiki/Comparison_of_free_software_licences">wikipedia</a>) using one of <i class="fab fa-r-project"></i>’s
 standard specifications. <i class="fab fa-r-project"></i> ships with the
 following <a href="https://www.r-project.org/Licenses/">standard licenses</a></p>
-<p>Be specific about any version that applies (e.g., <code>GPL-2</code>).
-Licenses restricting use, e.g., to academic or non-profit researchers, are not
-suitable for <a href="https://bioconductor.org"><em>Bioconductor</em></a>. Core Bioconductor packages are typically
-licensed under <code>Artistic-2.0</code>.</p>
+<p>Be specific about any version that applies (e.g., <code>GPL-2</code>). Licenses restricting
+use, e.g., to academic or non-profit researchers, are not suitable for
+<a href="https://bioconductor.org"><em>Bioconductor</em></a> as they limit accessibility, hinder integration with other
+open-source projects, and create barriers to collaboration and reproducibility.
+Examples of such restrictive licenses include (but are not limited to):</p>
+<ul>
+<li>
+<code>CC BY-NC 4.0</code> (Attribution-NonCommercial 4.0 International)</li>
+<li>
+<code>CC BY-NC-SA 4.0</code> (Attribution-NonCommercial-ShareAlike 4.0 International)</li>
+<li>
+<code>CC BY-NC-ND 4.0</code> (Attribution-NonCommercial-NoDerivatives 4.0 International)</li>
+<li>
+<code>ACM</code> (Association for Computing Machinery)</li>
+</ul>
+<p>These licenses restrict commercial use, modifications, or redistribution, making
+them incompatible with Bioconductor’s goals of open and broad accessibility.</p>
+<p>
+<details><summary>
+Click to see a list of licenses that restrict use
+</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">license_db_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Rhome.html">R.home</a></span><span class="op">(</span><span class="st">"share"</span><span class="op">)</span>, <span class="st">"licenses"</span>, <span class="st">"license.db"</span><span class="op">)</span></span>
+<span><span class="va">license_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dcf.html">read.dcf</a></span><span class="op">(</span><span class="va">license_db_path</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">license_db</span>, <span class="va">Restricts_use</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##                                                                               Name
+## 28            Creative Commons Attribution-NonCommercial 4.0 International License
+## 29 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
+## 30   Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License
+## 34                                                  ACM Software License Agreement
+##             Abbrev Version  SSS  OSI
+## 28    CC BY-NC 4.0    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+## 29 CC BY-NC-SA 4.0    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+## 30 CC BY-NC-ND 4.0    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+## 34             ACM    1998 &lt;NA&gt; &lt;NA&gt;
+##                                                                   FSF File
+## 28 non_free (https://www.gnu.org/licenses/license-list.html#CC-BY-NC) &lt;NA&gt;
+## 29 non_free (https://www.gnu.org/licenses/license-list.html#CC-BY-NC) &lt;NA&gt;
+## 30 non_free (https://www.gnu.org/licenses/license-list.html#CC-BY-NC) &lt;NA&gt;
+## 34                                                               &lt;NA&gt; &lt;NA&gt;
+##                                                                    URL FOSS
+## 28                      https://creativecommons.org/licenses/by-nc/4.0   no
+## 29                   https://creativecommons.org/licenses/by-nc-sa/4.0   no
+## 30                   https://creativecommons.org/licenses/by-nc-nd/4.0   no
+## 34 https://www.acm.org/publications/policies/software-copyright-notice   no
+##    Extensible Restricts_use
+## 28        yes           yes
+## 29        yes           yes
+## 30        yes           yes
+## 34       &lt;NA&gt;           yes
+##                                                                                         Note
+## 28                                                                                      &lt;NA&gt;
+## 29                                                                                      &lt;NA&gt;
+## 30                                                                                      &lt;NA&gt;
+## 34 Only appropriate for packages containing pre-2013 ACM code or\ndepend on others which do.</code></pre>
+</details></p>
+<p>Core Bioconductor packages are typically licensed under <code>Artistic-2.0</code>.</p>
 <p>To specify a non-standard license, include a file named <code>LICENSE</code> in your
 package (containing the full terms of your license) and use the string <code>file LICENSE</code> in this <code>License:</code> field.</p>
 <p>The package should contain only code that can be redistributed according to the
@@ -234,9 +286,9 @@ code.Commonly, annotation and experiment packages (e.g., <code>TxDb*</code>) use
 vignette and example code are included in this field thus avoiding a costly
 download. In the case where an external one-off function is required for
 package code, the package availability and usage can be done via:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="description.html#cb4-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">'suggPKG'</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-2"><a href="description.html#cb4-2" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Install 'suggPKG' to use this function."</span>)</span>
-<span id="cb4-3"><a href="description.html#cb4-3" tabindex="-1"></a>suggPKG<span class="sc">::</span><span class="cf">function</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="description.html#cb6-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">'suggPKG'</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb6-2"><a href="description.html#cb6-2" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Install 'suggPKG' to use this function."</span>)</span>
+<span id="cb6-3"><a href="description.html#cb6-3" tabindex="-1"></a>suggPKG<span class="sc">::</span><span class="cf">function</span>()</span></code></pre></div>
 </li>
 <li><p><code>Enhances:</code> is for packages such as <code>Rmpi</code> or <code>parallel</code> that enhance the
 performance of your package, but are not strictly needed for its
@@ -358,7 +410,7 @@ Otherwise this field could optionally define the type of Bioconductor package
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2025-01-28.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2025-02-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
