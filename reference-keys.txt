@@ -141,6 +141,7 @@ makevars
 fortran
 ccode
 python
+cmake
 third-party-code
 shiny
 code-organisation

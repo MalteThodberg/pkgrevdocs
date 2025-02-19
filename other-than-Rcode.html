@@ -135,13 +135,25 @@ working examples for many tasks: the <a href="http://gallery.rcpp.org/">Rcpp Gal
 <h2>
 <span class="header-section-number">16.4</span> Python<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
 </h2>
-<p>The <em><a href="https://bioconductor.org/packages/3.21/basilisk">basilisk</a></em> package is required to integrate python into R packages. While
-<a href="https://rstudio.github.io/reticulate">reticulate</a> is an alternative, the developer must make a strong argument why
-basilisk is not used.</p>
+<p>The <em><a href="https://bioconductor.org/packages/3.21/basilisk">basilisk</a></em> package uses <code>conda</code> to configure an
+appropriate Python environment on the user’s machine. It is strongly
+recommended if the routine operation of a Bioconductor package relies on
+Python, as users should not be asked to manually install Python packages.</p>
+<p>The use of <a href="https://rstudio.github.io/reticulate">reticulate</a> for the R/Python interaction is left to the
+discretion of the developer.</p>
 </div>
-<div id="third-party-code" class="section level2" number="16.5">
+<div id="cmake" class="section level2" number="16.5">
 <h2>
-<span class="header-section-number">16.5</span> Other<a class="anchor" aria-label="anchor" href="#third-party-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5</span> CMake<a class="anchor" aria-label="anchor" href="#cmake"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <em><a href="https://bioconductor.org/packages/3.21/biocmake">biocmake</a></em> package guarantees that a certain
+minimal version of CMake is available on the user machine, either by using an
+existing CMake installation or by installing its own from the official website.
+This should be used whenever a package relies on CMake during its build.</p>
+</div>
+<div id="third-party-code" class="section level2" number="16.6">
+<h2>
+<span class="header-section-number">16.6</span> Other<a class="anchor" aria-label="anchor" href="#third-party-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use of external libraries whose functionality is redundant with libraries
 already supported is strongly discouraged. In cases where the external library
@@ -165,7 +177,8 @@ mainline third-party project.</p>
 <li><a class="nav-link" href="#fortran"><span class="header-section-number">16.2</span> Fortran</a></li>
 <li><a class="nav-link" href="#ccode"><span class="header-section-number">16.3</span> C / C++</a></li>
 <li><a class="nav-link" href="#python"><span class="header-section-number">16.4</span> Python</a></li>
-<li><a class="nav-link" href="#third-party-code"><span class="header-section-number">16.5</span> Other</a></li>
+<li><a class="nav-link" href="#cmake"><span class="header-section-number">16.5</span> CMake</a></li>
+<li><a class="nav-link" href="#third-party-code"><span class="header-section-number">16.6</span> Other</a></li>
 </ul>
 
       <div class="book-extra">
