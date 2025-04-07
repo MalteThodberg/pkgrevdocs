@@ -33,6 +33,7 @@ commonimport
 commonclass
 bioc-vignette
 readme
+generating-the-readme.md-from-the-main-vignette
 description
 description-pkg
 description-title

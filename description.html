@@ -157,7 +157,7 @@ maintained email address. This email address will be used for contact
 regarding any issues that arise with the package in the future.</p>
 <p>For persons with an <a href="https://orcid.org/">ORCiD</a> identifier provide the
 identifier via an element named “ORCID” in the comment argument of <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span><span class="st">"Lori"</span>, <span class="st">"Shepherd"</span>,</span>
 <span>  email <span class="op">=</span> <span class="va">Lori.Shepherd</span><span class="op">@</span><span class="va">roswellpark.org</span>,</span>
 <span>  role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cre"</span>, <span class="st">"aut"</span><span class="op">)</span>,</span>
@@ -198,7 +198,7 @@ them incompatible with Bioconductor’s goals of open and broad accessibility.</
 <p>
 <details><summary>
 Click to see a list of licenses that restrict use
-</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">license_db_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Rhome.html">R.home</a></span><span class="op">(</span><span class="st">"share"</span><span class="op">)</span>, <span class="st">"licenses"</span>, <span class="st">"license.db"</span><span class="op">)</span></span>
 <span><span class="va">license_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dcf.html">read.dcf</a></span><span class="op">(</span><span class="va">license_db_path</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">license_db</span>, <span class="va">Restricts_use</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span></span></code></pre></div>
@@ -287,9 +287,9 @@ code. Commonly, annotation and experiment packages (e.g., <code>TxDb*</code>) us
 vignette and example code are included in this field thus avoiding a costly
 download. In the case where an external one-off function is required for
 package code, the package availability and usage can be done via:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="description.html#cb6-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">'suggPKG'</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb6-2"><a href="description.html#cb6-2" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Install 'suggPKG' to use this function."</span>)</span>
-<span id="cb6-3"><a href="description.html#cb6-3" tabindex="-1"></a>suggPKG<span class="sc">::</span><span class="cf">function</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="description.html#cb9-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">'suggPKG'</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb9-2"><a href="description.html#cb9-2" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Install 'suggPKG' to use this function."</span>)</span>
+<span id="cb9-3"><a href="description.html#cb9-3" tabindex="-1"></a>suggPKG<span class="sc">::</span><span class="cf">function</span>()</span></code></pre></div>
 </li>
 <li><p><code>Enhances:</code> is for packages such as <code>Rmpi</code> or <code>parallel</code> that enhance the
 performance of your package, but are not strictly needed for its
