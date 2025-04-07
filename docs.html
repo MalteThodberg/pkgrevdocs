@@ -130,11 +130,13 @@ it is always possible to extend existing classes.</p>
 <p>A vignette demonstrates how to accomplish non-trivial tasks embodying the core
 functionality of your package. There are two common types of vignettes.</p>
 <ul>
-<li><p>(Recommended) An <em>R markdown</em> vignette is similar to a <em>Sweave</em> vignette, but uses
-<a href="http://daringfireball.net/projects/markdown/">markdown</a> instead of <span class="math inline">\(\LaTeX\)</span>
-for structuring text sections and resulting in HTML output. The <code>r   BiocStyle::CRANpkg("knitr")</code> package can process most <em>Sweave</em> and all <em>R
+<li><p>(Recommended) An <em>R markdown</em> vignette is similar to a <em>Sweave</em> vignette, but
+uses <a href="http://daringfireball.net/projects/markdown/">markdown</a> instead of
+<span class="math inline">\(\LaTeX\)</span> for structuring text sections and resulting in HTML output. The
+<em><a href="https://CRAN.R-project.org/package=knitr">knitr</a></em> package can process most <em>Sweave</em> and all <em>R
 markdown</em> vignettes, producing pleasing output. Refer to <a href="http://cran.fhcrc.org/doc/manuals/R-exts.html#Writing-package-vignettes">Writing package
-vignettes</a> for technical details. See the <code>r   BiocStyle::Biocpkg("BiocStyle")</code> package for a convenient way to use common
+vignettes</a> for technical details. See the
+<em><a href="https://bioconductor.org/packages/3.21/BiocStyle">BiocStyle</a></em> package for a convenient way to use common
 macros and a standard <em>Bioconductor</em> style vignette.</p></li>
 <li><p>A <em>Sweave</em> vignette is an <code>.Rnw</code> file that contains <span class="math inline">\(\LaTeX\)</span> and chunks of <i class="fab fa-r-project"></i> code. The code chunk starts with a line
 <code>&lt;&lt;&gt;&gt;=</code>, and ends with <code>@</code>. Each chunk is evaluated during <code>R CMD build</code>,
@@ -194,7 +196,7 @@ in a separate dedicated vignette section.</p>
 <p>Add an “Installation” section that show to users how to download and load the
 package from Bioconductor.</p>
 <p>These instructions and any installations instructions should be in an
-<code>eval=FALSE</code> code chunk. No where in the code (<i class="fab fa-r-project"></i>
+<code>eval=FALSE</code> code chunk. Nowhere in the code (<i class="fab fa-r-project"></i>
 code, man pages, vignettes, Rmd files) should someone try to install or download
 system dependencies, applications, packages, etc. Developers can provide
 instructions to follow in unevaluated code chunks, and should assume all
@@ -364,7 +366,7 @@ provided through <code>inst</code> subdirectories but do not substitute for the
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2025-02-24.</p>
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2025-04-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
